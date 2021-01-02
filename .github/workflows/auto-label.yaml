@@ -1,0 +1,63 @@
+# Name should reflect when action occurs
+name: Auto Label PR
+
+on: 
+  pull_request:
+    types: 
+      - opened
+      - closed
+      - synchronize
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  auto-labels:
+    runs-on: ubuntu-latest
+
+    ## Label PR on PR open based on branch name
+
+    steps:
+    - name: Label Initial PR
+      if: github.event.action == 'opened' # Only run the action when the PR was first opened
+      uses: ffittschen/pr-branch-labeler@v1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+    ## Remove labels on PR close
+
+    - name: Remove WIP Status Label
+      if: github.event.action == 'closed'
+      uses: actions-ecosystem/action-remove-labels@v1
+      continue-on-error: true
+      with:
+          github_token: ${{ secrets.github_token }}
+          labels: "status: WIP"
+
+    - name: Remove Blocked Status Label
+      if: github.event.action == 'closed'
+      uses: actions-ecosystem/action-remove-labels@v1
+      continue-on-error: true
+      with:
+          github_token: ${{ secrets.github_token }}
+          labels: "status: blocked"
+
+    ## Actions to run when commit added to PR
+    # - Check if commit message has 'wip' and label if so
+
+    - uses: actions/checkout@v2 
+      if: github.event.action == 'synchronize'
+
+    - name: Get Commit Message
+      if: github.event.action == 'synchronize'
+      id: commit
+      run: |
+        git fetch
+        git checkout ${{ github.event.pull_request.head.ref }}
+        echo "::set-output name=msg::$(git log -1 --pretty=format:'%s')"
+
+    - name: Add WIP Label if wip commit msg
+      if: startsWith(steps.commit.outputs.msg, 'wip') && github.event.action == 'synchronize'
+      uses: actions-ecosystem/action-add-labels@v1
+      with:
+        github_token: ${{ secrets.github_token }} 
+        labels: "status: wip"
+
