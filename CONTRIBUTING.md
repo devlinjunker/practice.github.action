@@ -4,7 +4,7 @@ Thanks for helping out!
 
 
 ## Reporting Issues
-The best way to [report an issue is through Github](https://github.com/devlinjunker/template.github.semver/issues/new/choose). The owners of the repo should get an email notification whenever a new issue is created.
+The best way to [report an issue is through Github](https://github.com/devlinjunker/example.cii/issues/new/choose). The owners of the repo should get an email notification whenever a new issue is created.
 
 
 ## Development 
@@ -21,8 +21,8 @@ There are multiple ways to use this template as a starting point for your own pr
 The **second best way to start a new project** is to either clone this repo using Git and point at your own remote:
 
 ```
-git clone --depth 1 -b main https://github.com/devlinjunker/template.github.semver.git;
-mv template.github.semver <new_server_project_name>;
+git clone --depth 1 -b main https://github.com/devlinjunker/example.cii.git;
+mv example.cii <new_server_project_name>;
 cd <new_server_project_name>;
 git remote remove origin;
 git remote add origin <new_remote_addr>;
@@ -37,8 +37,8 @@ Or, **you can download an archive of the repository** contents using the Github 
 
 After Downloading:
 ```
-unzip template.github.semver-main.zip;
-mv template.github.semver-main <new_server_project_name>;
+unzip example.cii-main.zip;
+mv example.cii-main <new_server_project_name>;
 cd <new_server_project_name>;
 git init;
 git remote add origin <remote_addr>;
@@ -56,7 +56,7 @@ Once you have a framework and development environment chosen for your project, y
 The steps **to update a Project that was created using this template**, or to **add these features to an existing project** are the same. In the projects root directory:
 ```
 git checkout main;
-git remote add template https://github.com/devlinjunker/template.github.semver.git;
+git remote add template https://github.com/devlinjunker/example.cii.git;
 git fetch template;
 git checkout template/main ./;
 git reset HEAD * ./;
