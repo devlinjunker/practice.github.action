@@ -8,7 +8,7 @@ Version: 0.2-SNAPSHOT
 [![GitHub License](https://img.shields.io/github/license/devlinjunker/example.cii?color=blue)](https://github.com/devlinjunker/example.cii/blob/develop/LICENSE)  
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/devlinjunker/example.cii)](https://github.com/devlinjunker/example.cii/releases)
 [![GitHub last commit](https://img.shields.io/github/last-commit/devlinjunker/example.cii)](https://github.com/devlinjunker/example.cii/commits/main)  
-<!-- [![CII Best Practices Summary](https://img.shields.io/cii/summary/4287?label=core-infrastructure)](https://bestpractices.coreinfrastructure.org/en/projects/4287)  -->
+[![CII Best Practices Summary](https://img.shields.io/cii/summary/4558?label=core-infrastructure)](https://bestpractices.coreinfrastructure.org/en/projects/4558)  
 [![GitHub issues](https://img.shields.io/github/issues/devlinjunker/example.cii)](https://github.com/devlinjunker/example.cii/issues)
 [![GitHub priority issues](https://img.shields.io/github/issues/devlinjunker/example.cii/-priority?color=red&label=priority%20issues)](https://github.com/devlinjunker/example.cii/issues?q=is%3Aopen+is%3Aissue+label%3A-priority)
 
@@ -20,9 +20,7 @@ This is an example project with a goal of 100% passing [Core Infrastructure Init
 
 Contains the following improvements for passing status:
 - Automated Test Suite (for Bash Scripts)
-<!--
 - Static Code Analysis (Linting)
--->
 
 
 ## Dependencies/Frameworks
