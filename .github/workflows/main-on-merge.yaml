@@ -14,7 +14,7 @@ jobs:
     - name: Collect READMEs for Wiki
       run: ./scripts/workflows/collect-wiki.sh
 
-    # from: https://github.com/marketplace/actions/wiki-page-creator-action
+    # from: https://github.com/marketplace/actions/wiki-page-creator-action 
     - name: Upload READMEs to Wiki
       uses: docker://decathlon/wiki-page-creator-action:latest
       env:
