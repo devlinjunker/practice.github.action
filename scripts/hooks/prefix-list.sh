@@ -6,7 +6,6 @@ OTHER_TYPES=( 'feat' 'fix' 'bugfix' 'perf' 'test' )
 # NOTE: expect this to be called in this directory
 DIR=`dirname $0`
 
-
 main() {
 
   # get allowed names from labels.yaml
@@ -19,4 +18,13 @@ main() {
 
 }
 
-main
+## For BATS testing
+mock() {
+  echo $BATS_PREFIX_LIST
+}
+
+if [ -z "$BATS_PREFIX_LIST" ]; then
+  main
+else
+  mock
+fi

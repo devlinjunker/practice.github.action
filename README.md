@@ -16,15 +16,12 @@ Version: 0.2-SNAPSHOT
 ## Intro
 <!-- Quick Description, could match Github repo description or have a little more info-->
 
-This is an example project with a goal of 100% Passing [Core Infrastructure Initiative Criteria]. 
+This is an example project with a goal of 100% passing [Core Infrastructure Initiative Criteria] status. It is based off of the [Github Semver Project](https://github.com/devlinjunker/template.github.semver) Template. 
 
-It is based off of:
-- Template [Github Semver Project](https://github.com/devlinjunker/template.github.semver)
-
-<!-- 
-With improvements:
+Contains the following improvements for passing status:
+- Automated Test Suite (for Bash Scripts)
+<!--
 - Static Code Analysis (Linting)
-- Automated Test Suite
 -->
 
 
@@ -33,6 +30,7 @@ With improvements:
 
 - [Bulldozer] - Github Application to Auto Squash and Merge feature PRs
 - [Git-mkver] - Binary that helps with determining next semantic version based on Git Tags
+- [BATS] - Automated Test Suite for Bash Scripts
 
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
@@ -45,7 +43,7 @@ With improvements:
  - [ ] Update this README and Links with project specific details
  - [ ] Review [Github Workflows] in Template (and improve for your process)
  - [ ] Add Custom Project Build and Configuration Files
- - Start Coding!
+ - Start Writing Tests and Coding!
 
 ## Links
 
@@ -73,3 +71,4 @@ With improvements:
 [Github Actions]: https://docs.github.com/en/free-pro-team@latest/actions
 [Bulldozer]: https://github.com/palantir/bulldozer
 [Git-mkver]: https://idc101.github.io/git-mkver/
+[BATS]: https://bats-core.readthedocs.io/

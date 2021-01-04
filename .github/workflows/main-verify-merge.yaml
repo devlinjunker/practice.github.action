@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
 
     - name: "Verify 'main' PR are from 'release-*' or 'patch-*' branch"
       run: ./scripts/workflows/branch-match.sh
@@ -25,3 +27,6 @@ jobs:
       with:
         regex: '-[0-9]+.[0-9]+(.[0-9]+)?'
         allowed_prefixes:  release,patch
+
+    - name: "Verify BATS Tests Pass"
+      run: 'lib/bats-core/bin/bats qa -r'
