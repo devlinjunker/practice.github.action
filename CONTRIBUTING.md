@@ -153,14 +153,14 @@ scripts/bin/lint.sh
 #### Testing
 This example includes tests for each of the Bash Scripts that help automate the Semantic Versioning process in GitHub Actions and that run during the Git Hooks. Each `.sh` file in the `scripts/` directory should have a corresponding `.bats` file in the `qa/scripts/` directory.
 
-Run every BATS test with:
+Run every test with:
 ```
-lib/bats-core/bin/bats qa -r
+qa/runner.sh
 ```
 
-Run a single BATS test with:
+Run a single test with:
 ```
-lib/bats-core/bin/bats <path to .bats file>
+qa/runner.sh --file <path to file>
 ```
 
 See the [READMEs in `qa/` directory](https://github.com/devlinjunker/example.cii/tree/develop/qa)

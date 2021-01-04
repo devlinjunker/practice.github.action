@@ -29,7 +29,7 @@ jobs:
         allowed_prefixes:  release,patch
 
     - name: "Verify BATS Tests Pass"
-      run: 'lib/bats-core/bin/bats qa -r'
+      run: 'scripts/bin/test.sh'
 
     - name: "Lint with Shellcheck"
       run: 'scripts/bin/lint.sh'
