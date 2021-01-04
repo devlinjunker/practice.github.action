@@ -1,5 +1,5 @@
 ---
-Version: 0.2-SNAPSHOT
+Version: 0.2.0
 ---
 
 # Example - CII 100%
