@@ -85,6 +85,8 @@ Break down how each folder is used in the repo and how different code file types
 |---- files specific to testing the script files (BATS)
 |-- (other testing files should be stored in here)
 - scripts/
+|-- bin/
+|---- (Scripts for developers to run the project)
 |-- hooks/
 |---- (Git Hooks Scripts)
 |-- release/
@@ -138,16 +140,18 @@ Review the [Security Policy](https://github.com/devlinjunker/template.github.sem
 
 
 #### Style Guide
-Once you start your project, you should update the style guide here or [link to a Wiki page](https://github.com/devlinjunker/template.github.semver/wiki/Styleguide) from here.
+This example uses the [Shellcheck](https://www.shellcheck.net/) command line tool to ensure that the Bash Scripts that help automate the Semantic Versioning process are written with up to date standards.
 
-Some ideas of things to include in your styleguide include:
- - Code Formating and (linting) tools used to ensure the style is met
- - Organization of Files
- - Best practices for designing new features
+See the [Shellcheck Wiki](https://github.com/koalaman/shellcheck/wiki/Checks) for a full list of the checks that it is performing
+
+Run the linting process with:
+```
+scripts/bin/lint.sh
+```
 
 
 #### Testing
-This template includes tests for each of the Bash Scripts that help automate the Semantic Versioning process in GitHub Actions and that run during the Git Hooks. Each `.sh` file in the `scripts/` directory should have a corresponding `.bats` file in the `qa/scripts/` directory.
+This example includes tests for each of the Bash Scripts that help automate the Semantic Versioning process in GitHub Actions and that run during the Git Hooks. Each `.sh` file in the `scripts/` directory should have a corresponding `.bats` file in the `qa/scripts/` directory.
 
 Run every BATS test with:
 ```

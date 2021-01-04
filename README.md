@@ -31,6 +31,7 @@ Contains the following improvements for passing status:
 - [Bulldozer] - Github Application to Auto Squash and Merge feature PRs
 - [Git-mkver] - Binary that helps with determining next semantic version based on Git Tags
 - [BATS] - Automated Test Suite for Bash Scripts
+- [ShellCheck] - Linting Tool for Bash Scripts
 
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
@@ -72,3 +73,4 @@ Contains the following improvements for passing status:
 [Bulldozer]: https://github.com/palantir/bulldozer
 [Git-mkver]: https://idc101.github.io/git-mkver/
 [BATS]: https://bats-core.readthedocs.io/
+[ShellCheck]: https://www.shellcheck.net/

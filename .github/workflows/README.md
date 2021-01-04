@@ -26,6 +26,7 @@ This directory contains files related to Github configurations and actions:
     - Prevents mergin branches with name `poc` or where last commit contains `wip` 
   - Verifies that Pull Request Title matches branch prefix
   - Runs BATS tests and errors if they fail
+  - Lints the shell script files with Shellcheck
 
   ### Cut `release-*` Branch Action (release-cut.yaml)
   - Verifies `feature` commits have been added to `develop` since last release cut
@@ -36,6 +37,7 @@ This directory contains files related to Github configurations and actions:
   - Verifies that Pull Request Title is correct format `release-*` or `hotfix-*`
   - Verifies that Pull Request branch is `release-*` or `hotfix-*` branch
   - Runs BATS tests and errors if they fail
+  - Lints the shell script files with Shellcheck
 
   ### On Merge to `main` Action (main-on-merge.yaml)
   - Syncs README.md files to wiki

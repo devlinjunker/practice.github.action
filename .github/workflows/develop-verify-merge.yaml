@@ -40,3 +40,6 @@ jobs:
     
     - name: "Verify BATS Tests Pass"
       run: 'lib/bats-core/bin/bats qa -r'
+
+    - name: "Lint with Shellcheck"
+      run: 'scripts/bin/lint.sh'
