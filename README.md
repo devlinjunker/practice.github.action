@@ -1,5 +1,5 @@
 ---
-Version: 0.1.0
+Version: 0.2.0
 ---
 
 # Example - CII 100%
@@ -8,7 +8,7 @@ Version: 0.1.0
 [![GitHub License](https://img.shields.io/github/license/devlinjunker/example.cii?color=blue)](https://github.com/devlinjunker/example.cii/blob/develop/LICENSE)  
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/devlinjunker/example.cii)](https://github.com/devlinjunker/example.cii/releases)
 [![GitHub last commit](https://img.shields.io/github/last-commit/devlinjunker/example.cii)](https://github.com/devlinjunker/example.cii/commits/main)  
-<!-- [![CII Best Practices Summary](https://img.shields.io/cii/summary/4287?label=core-infrastructure)](https://bestpractices.coreinfrastructure.org/en/projects/4287)  -->
+[![CII Best Practices Summary](https://img.shields.io/cii/summary/4558?label=core-infrastructure)](https://bestpractices.coreinfrastructure.org/en/projects/4558)  
 [![GitHub issues](https://img.shields.io/github/issues/devlinjunker/example.cii)](https://github.com/devlinjunker/example.cii/issues)
 [![GitHub priority issues](https://img.shields.io/github/issues/devlinjunker/example.cii/-priority?color=red&label=priority%20issues)](https://github.com/devlinjunker/example.cii/issues?q=is%3Aopen+is%3Aissue+label%3A-priority)
 
@@ -16,16 +16,11 @@ Version: 0.1.0
 ## Intro
 <!-- Quick Description, could match Github repo description or have a little more info-->
 
-This is an example project with a goal of 100% Passing [Core Infrastructure Initiative Criteria]. 
+This is an example project with a goal of 100% passing [Core Infrastructure Initiative Criteria] status. It is based off of the [Github Semver Project](https://github.com/devlinjunker/template.github.semver) Template. 
 
-It is based off of:
-- Template [Github Semver Project](https://github.com/devlinjunker/template.github.semver)
-
-<!-- 
-With improvements:
+Contains the following improvements for passing status:
+- Automated Test Suite (for Bash Scripts)
 - Static Code Analysis (Linting)
-- Automated Test Suite
--->
 
 
 ## Dependencies/Frameworks
@@ -33,6 +28,8 @@ With improvements:
 
 - [Bulldozer] - Github Application to Auto Squash and Merge feature PRs
 - [Git-mkver] - Binary that helps with determining next semantic version based on Git Tags
+- [BATS] - Automated Test Suite for Bash Scripts
+- [ShellCheck] - Linting Tool for Bash Scripts
 
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
@@ -45,7 +42,7 @@ With improvements:
  - [ ] Update this README and Links with project specific details
  - [ ] Review [Github Workflows] in Template (and improve for your process)
  - [ ] Add Custom Project Build and Configuration Files
- - Start Coding!
+ - Start Writing Tests and Coding!
 
 ## Links
 
@@ -73,3 +70,5 @@ With improvements:
 [Github Actions]: https://docs.github.com/en/free-pro-team@latest/actions
 [Bulldozer]: https://github.com/palantir/bulldozer
 [Git-mkver]: https://idc101.github.io/git-mkver/
+[BATS]: https://bats-core.readthedocs.io/
+[ShellCheck]: https://www.shellcheck.net/

@@ -11,10 +11,10 @@ The best way to [report an issue is through Github](https://github.com/devlinjun
 <!-- This section details the steps to setup the project for development -->
 
 ### Environment Setup and Tools
-You will need to install Git and create an account on Github to take advantage of all of the features of this template. This template also uses scripts that expect Bash to be installed at `/bin/bash`.
+This example uses scripts that expect Bash to be installed at `/bin/bash`. The rest of the tools should be included when you clone the repo.
 
-#### Create your own Project from this Template
-There are multiple ways to use this template as a starting point for your own project. The **best way to use this is by cloning the repo to your GitHub account and creating your project with the template feature provided by Github**:
+#### Create your own Project from this Example
+There are multiple ways to use this example as a starting point for your own project. The **best way to use this is by cloning the repo to your GitHub account and creating your project with the template feature provided by Github**:
 
 <img width="1130" alt="template" src="https://user-images.githubusercontent.com/1504590/95393957-55b31c80-08b0-11eb-9126-55d8105881f4.png">
 
@@ -52,8 +52,8 @@ git push --set-upstream origin develop
 Once you have a framework and development environment chosen for your project, you should update your repo with specifics about how to install the tools and dependencies needed to run/debug/develop the application (See README for checklist).
 
 
-#### Update a Project or add to existing Project
-The steps **to update a Project that was created using this template**, or to **add these features to an existing project** are the same. In the projects root directory:
+#### Add Bash Testing to your Project
+You can also **add these features to an existing project** by using this template and following these steps:
 ```
 git checkout main;
 git remote add template https://github.com/devlinjunker/example.cii.git;
@@ -67,6 +67,8 @@ git commit;
 git push;
 ```
 
+**Or you can just use this example as an idea for your own projects**
+
 
 ### Folder Structure
 Break down how each folder is used in the repo and how different code file types should be organized.
@@ -78,9 +80,13 @@ Break down how each folder is used in the repo and how different code file types
 |-- workflows/
 |---- (Github workflow .yaml files)
 |-- (other github specific files)
-- img/
-|-- (project image files)
+- qa/
+|-- scripts/
+|---- files specific to testing the script files (BATS)
+|-- (other testing files should be stored in here)
 - scripts/
+|-- bin/
+|---- (Scripts for developers to run the project)
 |-- hooks/
 |---- (Git Hooks Scripts)
 |-- release/
@@ -134,24 +140,30 @@ Review the [Security Policy](https://github.com/devlinjunker/template.github.sem
 
 
 #### Style Guide
-Once you start your project, you should update the style guide here or [link to a Wiki page](https://github.com/devlinjunker/template.github.semver/wiki/Styleguide) from here.
+This example uses the [Shellcheck](https://www.shellcheck.net/) command line tool to ensure that the Bash Scripts that help automate the Semantic Versioning process are written with up to date standards.
 
-Some ideas of things to include in your styleguide include:
- - Code Formating and (linting) tools used to ensure the style is met
- - Organization of Files
- - Best practices for designing new features
+See the [Shellcheck Wiki](https://github.com/koalaman/shellcheck/wiki/Checks) for a full list of the checks that it is performing
+
+Run the linting process with:
+```
+scripts/bin/lint.sh
+```
 
 
 #### Testing
-This template doesn't include any tests yet (although we could add them...). Once you start using this for your own project though, you should include any testing details and requirements here.
+This example includes tests for each of the Bash Scripts that help automate the Semantic Versioning process in GitHub Actions and that run during the Git Hooks. Each `.sh` file in the `scripts/` directory should have a corresponding `.bats` file in the `qa/scripts/` directory.
 
-Ideas to consider for testing:
- - unit tests
- - integration tess
- - e2e tests
- - automation tests
- - contract tests
- - mutation tests
+Run every test with:
+```
+qa/runner.sh
+```
+
+Run a single test with:
+```
+qa/runner.sh --file <path to file>
+```
+
+See the [READMEs in `qa/` directory](https://github.com/devlinjunker/example.cii/tree/develop/qa)
 
 
 #### Release 
