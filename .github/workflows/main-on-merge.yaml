@@ -23,7 +23,7 @@ jobs:
         GH_PAT: ${{ secrets.PAT }}
         MD_FOLDER: "./wiki"
         OWNER: devlinjunker
-        REPO_NAME: example.ciis
+        REPO_NAME: example.cii
         SKIP_MD: README.md
 
   create-release-tag:
