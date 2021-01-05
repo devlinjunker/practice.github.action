@@ -22,6 +22,20 @@ main() {
     return 1;
   fi
 
+  git stash save -k "githook uncommitted changes" > /dev/null;
+
+  if ! $DIR/../bin/lint.sh; then
+    git stash pop;
+    return 1;
+  fi
+
+
+  if ! $DIR/../bin/test.sh; then
+    git stash pop;
+    return 1;
+  fi
+
+  git stash pop || true;
 }
 
 main

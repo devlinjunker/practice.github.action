@@ -11,14 +11,17 @@ all_script_tests() {
 }
 
 main() {
-    case "$1" in
-        --file | -f)
-            find_script_test "${@: 2}"
-            ;;
-        --all | -a | *)
-            all_script_tests
-            ;;
-    esac
+    # skip if in test (avoid infinite loop)
+    if [[ -z "$BATS_TMPDIR" ]]; then
+        case "$1" in
+            --file | -f)
+                find_script_test "${@: 2}"
+                ;;
+            --all | -a | *)
+                all_script_tests
+                ;;
+        esac
+    fi
 }
 
 main "$@"
