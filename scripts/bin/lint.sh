@@ -22,7 +22,10 @@ lint_scripts() {
 
 
 main() {
-    lint_scripts
+    # skip if in test (avoid infinite loop)
+    if [[ -z $BATS_TMPDIR ]]; then
+        lint_scripts
+    fi
 }
 
 main "$@"

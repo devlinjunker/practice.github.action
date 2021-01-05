@@ -21,6 +21,8 @@ Git hooks need to be added to your local repo for each project,
 
    ### pre-push
    - enforces that the branch name matches style: <prefix>/<feature_name>
+   - runs `scripts/bin/lint.sh` to lint before pushing
+   - runs `scripts/bin/test.sh` to require unit tests pass before pushing
 
    ### post-commit
    - warns when changes are getting large since "last merge"

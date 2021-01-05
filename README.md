@@ -1,5 +1,5 @@
 ---
-Version: 0.2.1
+Version: 0.3.0
 ---
 
 # Example - CII 100%
@@ -16,7 +16,7 @@ Version: 0.2.1
 ## Intro
 <!-- Quick Description, could match Github repo description or have a little more info-->
 
-This is an example project with a goal of 100% passing [Core Infrastructure Initiative Criteria] status. It is based off of the [Github Semver Project](https://github.com/devlinjunker/template.github.semver) Template. 
+This is an example project with a goal of 100% passing [Core Infrastructure Initiative Criteria] status. It is based off of the [GitHub Semver Project] Template. 
 
 Contains the following improvements for passing status:
 - Automated Test Suite (for Bash Scripts)
@@ -33,16 +33,27 @@ Contains the following improvements for passing status:
 
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
- 
- <!-- - [ ] Review the [Wiki] - overview of the concepts -->
- - [ ] [Clone or Template to New Project][Contributing Guide]
- - [ ] Review/Update [License] File
- - [ ] Review/Update [Security Policy]
-   - Provide private way of reporting vulnerabilities?
- - [ ] Update this README and Links with project specific details
- - [ ] Review [Github Workflows] in Template (and improve for your process)
- - [ ] Add Custom Project Build and Configuration Files
- - Start Writing Tests and Coding!
+
+ - [ ] Review documentation in [GitHub Semver Project]
+ - [ ] Clone repo (with submodules)
+    - follow GitHub Semver Project setup steps if creating your own project
+
+### Add Code
+ - [ ] Create branch matching style `<prefix>/<hyphenated-description>`
+ - [ ] Add changes to branch
+ - [ ] Before push, if hooks are installed, should do the following (otherwise manual):
+    - [ ] Run bash linting with `./scripts/bin/lint.sh`
+    - [ ] Run all unit tests with `./scripts/bin/test.sh`
+ - [ ] Create Pull Request against `develop`
+
+
+### Create Release
+See full details in the Github Semver Project [wiki](https://github.com/devlinjunker/template.github.semver/wiki/Release)
+ - **Must be after `feature/*` or `feat/*` branch is merged**
+ - [ ] Initiate `release-cut` GitHub Action
+ - [ ] Merge the created `release-*` PR to `main` to start release
+    - **Avoid `squash and merge`**
+
 
 ## Links
 
@@ -52,6 +63,8 @@ Contains the following improvements for passing status:
 <!-- - [Wiki] -->
 - External
   - [Core Infrastructure Initiative Criteria]
+  - [BATS]
+  - [ShellCheck]
 
 ## Contributors
 
@@ -72,3 +85,4 @@ Contains the following improvements for passing status:
 [Git-mkver]: https://idc101.github.io/git-mkver/
 [BATS]: https://bats-core.readthedocs.io/
 [ShellCheck]: https://www.shellcheck.net/
+[GitHub Semver Project]: https://github.com/devlinjunker/template.github.semver
