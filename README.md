@@ -39,7 +39,7 @@ Contains the following improvements for passing status:
     - follow GitHub Semver Project setup steps if creating your own project
 
 ### Add Code
- - [ ] Create branch matching style `<prefix>/<hyphenated-description>
+ - [ ] Create branch matching style `<prefix>/<hyphenated-description>`
  - [ ] Add changes to branch
  - [ ] Before push, if hooks are installed, should do the following (otherwise manual):
     - [ ] Run bash linting with `./scripts/bin/lint.sh`
