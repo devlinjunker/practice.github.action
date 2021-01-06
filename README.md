@@ -33,6 +33,7 @@ Also contains:
 - [Git-mkver] - Binary that helps with determining next semantic version based on Git Tags
 - [BATS] - Automated Test Suite for Bash Scripts
 - [ShellCheck] - Linting Tool for Bash Scripts
+- [PR Landmine Action] - Mutation Testing Pull Requests
 
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
@@ -82,6 +83,7 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 [Contributing Guide]: CONTRIBUTING.md
 [Git Hooks]: scripts/hooks#git-hook-scripts
 [Github Workflows]: .github/workflows#github-workflows
+[Wiki]: https://github.com/devlinjunker/example.cii/wiki
 [Core Infrastructure Initiative Criteria]: https://bestpractices.coreinfrastructure.org/en/criteria/0
 [Bash]: https://tldp.org/LDP/abs/html/
 [Github Actions]: https://docs.github.com/en/free-pro-team@latest/actions
