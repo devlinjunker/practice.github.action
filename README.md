@@ -22,6 +22,9 @@ Contains the following improvements for passing status:
 - Automated Test Suite (for Bash Scripts)
 - Static Code Analysis (Linting)
 
+Also contains:
+- [PR Landmine Action]
+
 
 ## Dependencies/Frameworks
 <!-- List the frameworks, libraries, and tools the project uses: -->
@@ -39,7 +42,7 @@ Contains the following improvements for passing status:
     - follow GitHub Semver Project setup steps if creating your own project
 
 ### Add Code
- - [ ] Create branch matching style `<prefix>/<hyphenated-description>
+ - [ ] Create branch matching style `<prefix>/<hyphenated-description>`
  - [ ] Add changes to branch
  - [ ] Before push, if hooks are installed, should do the following (otherwise manual):
     - [ ] Run bash linting with `./scripts/bin/lint.sh`
@@ -60,11 +63,12 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 - [Code of Conduct]
 - [Contributing Guide]
 - [Security Policy]
-<!-- - [Wiki] -->
+- [Wiki]
 - External
   - [Core Infrastructure Initiative Criteria]
   - [BATS]
   - [ShellCheck]
+  - [PR Landmine Action]
 
 ## Contributors
 
@@ -86,3 +90,4 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 [BATS]: https://bats-core.readthedocs.io/
 [ShellCheck]: https://www.shellcheck.net/
 [GitHub Semver Project]: https://github.com/devlinjunker/template.github.semver
+[PR Landmine Action]: https://github.com/tylermurry/github-pr-landmine

@@ -48,11 +48,14 @@ This directory contains files related to Github configurations and actions:
   ### Cut `patch-*` Branch Action (patch-cut.yaml)
   - Creates a new `patch-*` branch off of `main`, using the last tag to determine hotfix branch number and next version number
 
-
+  ### PR Landmine Action (landmine.yaml)
+  - Runs when comment on PR, starting with :bomb: and containing [suggestion syntax](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)
+    - Suggestion should check if tests will catch error caused by change 
+    - If the suggestion is bad, you should be able to edit the suggestion and comment on the thread to re-run the action
 
 
 ## Ideas
-  - [ ] pr mutation testing: https://github.com/tylermurry/github-pr-landmine
+  - [x] pr mutation testing: https://github.com/tylermurry/github-pr-landmine
   - [x] build docs on merge to `main`
   - [ ] build artifacts on release (merge to `main`)
   - [ ] run build/compile in `develop-verify-merge.yaml` to ensure PR is valid
