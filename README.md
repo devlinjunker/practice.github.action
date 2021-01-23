@@ -38,9 +38,12 @@ Also contains:
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
 
+ - [ ] Review [Wiki]
+    - [FAQ]
+    - [README Pages]
  - [ ] Review documentation in [GitHub Semver Project]
  - [ ] Clone repo (with submodules)
-    - follow GitHub Semver Project setup steps if creating your own project
+    - If forking to a new project, follow the [Steps for New Project] before adding new code
 
 ### Add Code
  - [ ] Create branch matching style `<prefix>/<hyphenated-description>`
@@ -65,6 +68,8 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 - [Contributing Guide]
 - [Security Policy]
 - [Wiki]
+  - [FAQ]
+  - [README Pages]
 - External
   - [Core Infrastructure Initiative Criteria]
   - [BATS]
@@ -84,6 +89,9 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 [Git Hooks]: scripts/hooks#git-hook-scripts
 [Github Workflows]: .github/workflows#github-workflows
 [Wiki]: https://github.com/devlinjunker/example.cii/wiki
+[FAQ]: https://github.com/devlinjunker/example.cii/wiki/!-FAQ
+[README Pages]: https://github.com/devlinjunker/example.cii/wiki/.README-(synced)
+[Steps for New Project]: https://github.com/devlinjunker/template.github.semver#steps-for-new-project
 [Core Infrastructure Initiative Criteria]: https://bestpractices.coreinfrastructure.org/en/criteria/0
 [Bash]: https://tldp.org/LDP/abs/html/
 [Github Actions]: https://docs.github.com/en/free-pro-team@latest/actions
@@ -91,5 +99,5 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 [Git-mkver]: https://idc101.github.io/git-mkver/
 [BATS]: https://bats-core.readthedocs.io/
 [ShellCheck]: https://www.shellcheck.net/
-[GitHub Semver Project]: https://github.com/devlinjunker/template.github.semver
+[GitHub Semver Project]: https://github.com/devlinjunker/template.github.semver#intro
 [PR Landmine Action]: https://github.com/tylermurry/github-pr-landmine

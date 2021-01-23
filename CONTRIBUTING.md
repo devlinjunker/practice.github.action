@@ -11,63 +11,9 @@ The best way to [report an issue is through Github](https://github.com/devlinjun
 <!-- This section details the steps to setup the project for development -->
 
 ### Environment Setup and Tools
-This example uses scripts that expect Bash to be installed at `/bin/bash`. The rest of the tools should be included when you clone the repo.
+This project has been tested on OSX Machines and uses script files that expect Bash to be installed at `/bin/bash`. 
 
-#### Create your own Project from this Example
-There are multiple ways to use this example as a starting point for your own project. The **best way to use this is by cloning the repo to your GitHub account and creating your project with the template feature provided by Github**:
-
-<img width="1130" alt="template" src="https://user-images.githubusercontent.com/1504590/95393957-55b31c80-08b0-11eb-9126-55d8105881f4.png">
-
-The **second best way to start a new project** is to either clone this repo using Git and point at your own remote:
-
-```
-git clone --depth 1 -b main https://github.com/devlinjunker/example.cii.git;
-mv example.cii <new_server_project_name>;
-cd <new_server_project_name>;
-git remote remove origin;
-git remote add origin <new_remote_addr>;
-git push --set-upstream origin main;
-git checkout -b develop;
-git push --set-upstream origin develop;
-```
-
-Or, **you can download an archive of the repository** contents using the Github "Download" link and extract this to access all of the files and create a new Git project with them:
-
-<img width="946" alt="zip" src="https://user-images.githubusercontent.com/1504590/95393961-56e44980-08b0-11eb-95a3-660860e83c41.png">
-
-After Downloading:
-```
-unzip example.cii-main.zip;
-mv example.cii-main <new_server_project_name>;
-cd <new_server_project_name>;
-git init;
-git remote add origin <remote_addr>;
-git add *;
-git commit;
-git push;
-git checkout -b develop;
-git push --set-upstream origin develop
-```
-
-Once you have a framework and development environment chosen for your project, you should update your repo with specifics about how to install the tools and dependencies needed to run/debug/develop the application (See README for checklist).
-
-
-#### Add Bash Testing to your Project
-You can also **add these features to an existing project** by using this template and following these steps:
-```
-git checkout main;
-git remote add template https://github.com/devlinjunker/example.cii.git;
-git fetch template;
-git checkout template/main ./;
-git reset HEAD * ./;
-git status; # to see new files and changed files
-<compare diff with `origin/main` to see updates>
-git add *;
-git commit;
-git push;
-```
-
-**Or you can just use this example as an idea for your own projects**
+The remaining dependencies should be downloaded when you clone the repo (with submodules for other git repos). The included archive files will be extracted before use, so there is no additional steps necessary.
 
 
 ### Folder Structure
@@ -80,6 +26,8 @@ Break down how each folder is used in the repo and how different code file types
 |-- workflows/
 |---- (Github workflow .yaml files)
 |-- (other github specific files)
+- lib/
+|-- (dependency library directories and compressed archives)
 - qa/
 |-- scripts/
 |---- files specific to testing the script files (BATS)

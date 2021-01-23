@@ -13,14 +13,14 @@ Git hooks need to be added to your local repo for each project,
 
 
    ### pre-commit
-   - enforces that the branch name matches style: <prefix>/<feature_name>
+   - enforces that the branch name matches style: `<prefix>/<feature_name>`
    - enforces that branch is not `main` or `develop` or prefixed with `release`
 
    ### commit-msg
    - enforces that first line of commit message matches conventional commit (ish) style `<type>:<description>`
 
    ### pre-push
-   - enforces that the branch name matches style: <prefix>/<feature_name>
+   - enforces that the branch name matches style: `<prefix>/<feature_name>`
    - runs `scripts/bin/lint.sh` to lint before pushing
    - runs `scripts/bin/test.sh` to require unit tests pass before pushing
 
@@ -30,10 +30,12 @@ Git hooks need to be added to your local repo for each project,
       - 400 lines
 
 
+**Note:** Prefix comes from prefix-lis.sh script, which defines defaults and uses the `.github/labels.yaml` file
+
 ## Ideas for Hooks
 
- - Ensure Program Compiles before commit
- - Run tests before commit
+ - [x] Ensure Program Compiles before commit
+ - [x] Run tests before commit
    - only if code files touched?
    - only run tests affected by code files modified?
  - Prevent Commit based on Github Branch protections
