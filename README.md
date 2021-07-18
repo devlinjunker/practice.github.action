@@ -43,6 +43,7 @@ Also contains:
     - [README Pages]
  - [ ] Review documentation in [GitHub Semver Project]
  - [ ] Clone repo (with submodules)
+    - `git clone --recurse-submodules --remote-submodules https://github.com/devlinjunker/example.cii.git`
     - If forking to a new project, follow the [Steps for New Project] before adding new code
 
 ### Add Code

@@ -11,7 +11,7 @@ fi
 
 
 MSG_PREFIXES=( 'wip' )
-OTHER_PREFIXES=$("$DIR"/prefix-list.sh)
+OTHER_PREFIXES=$("$DIR"/internal/prefix-list.sh)
 
 
 COMMIT_MSG_ERROR=" ! Invalid commit message  "

@@ -2,7 +2,7 @@
 load '../../../lib/bats-support/load'
 load '../../../lib/bats-assert/load'
 
-SCRIPT_DIR="$BATS_TEST_DIRNAME"/../../../scripts/hooks
+SCRIPT_DIR="$BATS_TEST_DIRNAME"/../../../scripts/hooks/internal
 TEST_PREFIX="branch-protections.sh -";
 
 @test "$TEST_PREFIX should error on 'main' or 'develop' " {

@@ -1,0 +1,44 @@
+#!/usr/bin/env ../../..libs/bats/bin/bats
+load '../../lib/bats-support/load'
+load '../../lib/bats-assert/load'
+
+# ^^ Make sure the above are correct, or make relative ^^
+
+SCRIPT_FILENAME="<file_name>.sh"
+
+# path to directory containing script
+SCRIPT_DIR="$BATS_TEST_DIRNAME"/../../../scripts/release
+
+TEST_PREFIX="$SCRIPT_FILENAME -";
+
+
+## Mock git binary that stores all call args in file by line
+function git() {
+    # store arguments in file to compare later
+    #echo "$@" >> $BATS_TMPDIR/git.args
+}
+
+
+setup() {
+    # override `git` command with local function
+    #export -f git
+}
+
+teardown() {
+    # remove override
+    #unset git
+    
+    # remove file at end of tests
+    #rm $BATS_TMPDIR/git.args
+}
+
+
+@test "$TEST_PREFIX should ... " {
+    #run "$SCRIPT_DIR"/"$SCRIPT_FILENAME"
+
+    # read '$first' line from file
+    #first=$(sed '1q;d' $BATS_TMPDIR/git.args)
+
+    # compare to expected arguments
+    #assert_equal "$first" "checkout develop"
+}

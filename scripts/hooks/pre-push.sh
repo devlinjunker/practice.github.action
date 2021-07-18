@@ -15,27 +15,32 @@ BRANCH_NAME_ERROR=" !  Branch name does not match conventions  "
 main() {
 
   # Call branch name script
-  if ! $DIR/branch-name.sh; then
+  if ! $DIR/internal/branch-name.sh; then
     echo "$(tput setaf 1)$(tput setab 7)$BRANCH_NAME_ERROR$(tput sgr 0)"
     echo "  <prefix>/<description>"
-    echo "prefix options: ($($DIR/prefix-list.sh -o))"
+    echo "prefix options: ($($DIR/internal/prefix-list.sh -o))"
     return 1;
   fi
 
-  git stash save -k "githook uncommitted changes" > /dev/null;
+  # Test if last commit message starts with `wip`
+  message=$(git log --pretty=format:"%s" -1)
 
-  if ! $DIR/../bin/lint.sh; then
-    git stash pop;
-    return 1;
+  if [[ "$message" != "wip"* ]]; then
+    git stash save -k "githook uncommitted changes" > /dev/null;
+
+    if ! $DIR/../bin/lint.sh; then
+      git stash pop;
+      return 1;
+    fi
+
+
+    if ! $DIR/../bin/test.sh; then
+      git stash pop;
+      return 1;
+    fi
+
+    git stash pop || true;
   fi
-
-
-  if ! $DIR/../bin/test.sh; then
-    git stash pop;
-    return 1;
-  fi
-
-  git stash pop || true;
 }
 
 main
