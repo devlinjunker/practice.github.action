@@ -17,10 +17,11 @@ setup() {
 
 teardown() {
     unset git
+    rm $BATS_TMPDIR/git.args
 }
 
 @test "$TEST_PREFIX should call git and merge main into develop" {
-    run "$SCRIPT_DIR"/release-prep-upmerge.sh
+    run "$SCRIPT_DIR"/release-prep-upmerge.sh main
 
     first=$(sed '1q;d' $BATS_TMPDIR/git.args)
     second=$(sed '2q;d' $BATS_TMPDIR/git.args)
