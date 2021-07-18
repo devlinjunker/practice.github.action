@@ -1,8 +1,8 @@
 #!/usr/bin/env ../../..libs/bats/bin/bats
-load '../../../lib/bats-support/load'
-load '../../../lib/bats-assert/load'
+load '../../../../lib/bats-support/load'
+load '../../../../lib/bats-assert/load'
 
-SCRIPT_DIR="$BATS_TEST_DIRNAME"/../../../scripts/hooks/internal
+SCRIPT_DIR="$BATS_TEST_DIRNAME"/../../../../scripts/hooks/internal
 
 TEST_PREFIX="branch-name.sh -";
 

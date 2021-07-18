@@ -4,6 +4,8 @@
 
 **Visual:** <!-- Add a screenshot! -->
 
+**Tests:** <!-- Explain Testing done or why testing is not needed -->
+
 **TODO:**
  - [ ] Updated README documents
  - [ ] Complete PR Body

@@ -33,6 +33,8 @@ main() {
     # skip if in test (avoid infinite loop)
     if [[ -z $BATS_TMPDIR ]]; then
         lint_scripts
+    else
+        echo "RUNNING_LINTS"
     fi
 }
 
