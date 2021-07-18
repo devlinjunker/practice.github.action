@@ -16,8 +16,16 @@ lint_scripts() {
         popd || exit
     fi
 
-    # shellcheck disable=SC2211,SC2046
-    "$DIR"/../../lib/shellcheck*/shellcheck $(find "$DIR"/../../scripts/**/*.sh -name '*.sh')
+    files=$(find "$DIR"/../../scripts/**/*.sh -name '*.sh')
+
+    for f in ${files[*]}
+    do
+        echo "$f"
+        # shellcheck disable=SC2211,SC2046
+        "$DIR"/../../lib/shellcheck*/shellcheck "$f"
+    done
+
+    
 }
 
 
@@ -25,6 +33,8 @@ main() {
     # skip if in test (avoid infinite loop)
     if [[ -z $BATS_TMPDIR ]]; then
         lint_scripts
+    else
+        echo "RUNNING_LINTS"
     fi
 }
 

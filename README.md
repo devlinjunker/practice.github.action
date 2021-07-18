@@ -1,5 +1,5 @@
 ---
-Version: 0.3.0
+Version: 0.4.0
 ---
 
 # Example - CII 100%
@@ -22,6 +22,9 @@ Contains the following improvements for passing status:
 - Automated Test Suite (for Bash Scripts)
 - Static Code Analysis (Linting)
 
+Also contains:
+- [PR Landmine Action]
+
 
 ## Dependencies/Frameworks
 <!-- List the frameworks, libraries, and tools the project uses: -->
@@ -30,13 +33,18 @@ Contains the following improvements for passing status:
 - [Git-mkver] - Binary that helps with determining next semantic version based on Git Tags
 - [BATS] - Automated Test Suite for Bash Scripts
 - [ShellCheck] - Linting Tool for Bash Scripts
+- [PR Landmine Action] - Mutation Testing Pull Requests
 
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
 
+ - [ ] Review [Wiki]
+    - [FAQ]
+    - [README Pages]
  - [ ] Review documentation in [GitHub Semver Project]
  - [ ] Clone repo (with submodules)
-    - follow GitHub Semver Project setup steps if creating your own project
+    - `git clone --recurse-submodules --remote-submodules https://github.com/devlinjunker/example.cii.git`
+    - If forking to a new project, follow the [Steps for New Project] before adding new code
 
 ### Add Code
  - [ ] Create branch matching style `<prefix>/<hyphenated-description>`
@@ -60,11 +68,14 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 - [Code of Conduct]
 - [Contributing Guide]
 - [Security Policy]
-<!-- - [Wiki] -->
+- [Wiki]
+  - [FAQ]
+  - [README Pages]
 - External
   - [Core Infrastructure Initiative Criteria]
   - [BATS]
   - [ShellCheck]
+  - [PR Landmine Action]
 
 ## Contributors
 
@@ -78,6 +89,10 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 [Contributing Guide]: CONTRIBUTING.md
 [Git Hooks]: scripts/hooks#git-hook-scripts
 [Github Workflows]: .github/workflows#github-workflows
+[Wiki]: https://github.com/devlinjunker/example.cii/wiki
+[FAQ]: https://github.com/devlinjunker/example.cii/wiki/!-FAQ
+[README Pages]: https://github.com/devlinjunker/example.cii/wiki/.README-(synced)
+[Steps for New Project]: https://github.com/devlinjunker/template.github.semver#steps-for-new-project
 [Core Infrastructure Initiative Criteria]: https://bestpractices.coreinfrastructure.org/en/criteria/0
 [Bash]: https://tldp.org/LDP/abs/html/
 [Github Actions]: https://docs.github.com/en/free-pro-team@latest/actions
@@ -85,4 +100,5 @@ See full details in the Github Semver Project [wiki](https://github.com/devlinju
 [Git-mkver]: https://idc101.github.io/git-mkver/
 [BATS]: https://bats-core.readthedocs.io/
 [ShellCheck]: https://www.shellcheck.net/
-[GitHub Semver Project]: https://github.com/devlinjunker/template.github.semver
+[GitHub Semver Project]: https://github.com/devlinjunker/template.github.semver#intro
+[PR Landmine Action]: https://github.com/tylermurry/github-pr-landmine

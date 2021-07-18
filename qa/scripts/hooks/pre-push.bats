@@ -35,9 +35,10 @@ TEST_PREFIX="pre-push.sh -";
     export BATS_PREFIX_LIST
 
     run "$SCRIPT_DIR"/pre-push.sh
+    assert_success
 
     unset BATS_PREFIX_LIST
-    assert_success
+    unset git
 }
 
 @test "$TEST_PREFIX should not error on patch branch" {
@@ -50,7 +51,48 @@ TEST_PREFIX="pre-push.sh -";
     export BATS_PREFIX_LIST
 
     run "$SCRIPT_DIR"/pre-push.sh
+    assert_success
 
     unset BATS_PREFIX_LIST
-    assert_success
+    unset git
 }
+
+@test "$TEST_PREFIX should run lint and test" {
+    function git() {
+        echo "abc/test";
+    }
+    export -f git
+
+    BATS_PREFIX_LIST="abc"
+    export BATS_PREFIX_LIST
+    
+    run "$SCRIPT_DIR"/pre-push.sh
+    assert_output --partial 'RUNNING_TESTS'
+
+    run "$SCRIPT_DIR"/pre-push.sh
+    assert_output --partial 'RUNNING_LINTS'
+
+    unset BATS_PREFIX_LIST
+    unset git
+} 
+
+@test "$TEST_PREFIX should not run lint or test if 'wip' branch" {
+    function git() {
+        echo "wip:";
+    }
+
+    export -f git
+
+    BATS_PREFIX_LIST="wip"
+    export BATS_PREFIX_LIST
+
+    run "$SCRIPT_DIR"/pre-push.sh
+    refute_output --partial 'RUNNING_TESTS'
+
+    run "$SCRIPT_DIR"/pre-push.sh
+    refute_output --partial 'RUNNING_LINTS'
+
+    unset BATS_PREFIX_LIST
+    unset git
+}
+

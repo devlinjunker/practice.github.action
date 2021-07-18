@@ -1,4 +1,8 @@
-# Name should reflect when action occurs
+## This action automatically handles PR labels with:
+##  - On PR opened, label based on pr-branch-labeler.yml
+##  - On PR closed, remove WIP or blocked labels
+##  - On commit added, if message contains 'wip' then add WIP label
+
 name: Auto Label PR
 
 on: 
@@ -26,7 +30,7 @@ jobs:
 
     - name: Remove WIP Status Label
       if: github.event.action == 'closed'
-      uses: actions-ecosystem/action-remove-labels@v1
+      uses: actions-ecosystem/action-remove-labels@v1.1.0
       continue-on-error: true
       with:
           github_token: ${{ secrets.github_token }}
@@ -34,7 +38,7 @@ jobs:
 
     - name: Remove Blocked Status Label
       if: github.event.action == 'closed'
-      uses: actions-ecosystem/action-remove-labels@v1
+      uses: actions-ecosystem/action-remove-labels@v1.1.0
       continue-on-error: true
       with:
           github_token: ${{ secrets.github_token }}
@@ -56,7 +60,7 @@ jobs:
 
     - name: Add WIP Label if wip commit msg
       if: startsWith(steps.commit.outputs.msg, 'wip') && github.event.action == 'synchronize'
-      uses: actions-ecosystem/action-add-labels@v1
+      uses: actions-ecosystem/action-add-labels@v1.1.2
       with:
         github_token: ${{ secrets.github_token }} 
         labels: "status: wip"

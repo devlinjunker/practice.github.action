@@ -21,6 +21,8 @@ main() {
                 all_script_tests
                 ;;
         esac
+    else
+        echo "RUNNING_TESTS"
     fi
 }
 

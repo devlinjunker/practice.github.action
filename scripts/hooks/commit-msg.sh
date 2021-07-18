@@ -2,7 +2,7 @@
 # Script to verify that commit message matches conventions
 
 # set directory for calling other scripts
-DIR=$(dirname "$0")
+DIR=$(dirname "${BASH_SOURCE[0]}")
 # if in hook, then prep PATH to find in repo `scripts/hooks/` dir 
 # shellcheck disable=SC2076
 if [[ $DIR =~ ".git" ]]; then
@@ -11,7 +11,7 @@ fi
 
 
 MSG_PREFIXES=( 'wip' )
-OTHER_PREFIXES=$("$DIR"/prefix-list.sh)
+OTHER_PREFIXES=$("$DIR"/internal/prefix-list.sh)
 
 
 COMMIT_MSG_ERROR=" ! Invalid commit message  "
