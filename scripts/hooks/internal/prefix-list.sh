@@ -1,5 +1,10 @@
 #! /bin/bash
 
+# cannot `set -u` here because `if [ -z "$BATS_PREFIX_LIST" ];` errors
+## if we enforce bash version 4.2 then we can use `if [ -v BATS_PREFIX_LIST ]` to check
+## and then can `set -u` here 
+set -e
+
 OTHER_TYPES=( 'feat' 'fix' 'bugfix' 'perf' 'test' )
 
 # set directory for calling other scripts

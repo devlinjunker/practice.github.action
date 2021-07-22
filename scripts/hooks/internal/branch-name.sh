@@ -6,6 +6,7 @@
 #
 #  based on https://itnext.io/using-git-hooks-to-enforce-branch-naming-policy-ffd81fa01e5e
 
+set -eu
 
 # set directory for calling other scripts
 # NOTE: expect this to be called in this directory

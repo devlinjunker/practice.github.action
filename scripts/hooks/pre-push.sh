@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -eu
+
 # set directory for calling other scripts
 DIR=$(dirname "${BASH_SOURCE[0]}")
 

@@ -1,6 +1,7 @@
 #! /bin/bash
 # Checks that the git diff is not getting to big and warns if it is
 
+set -eu
 
 # TODO: better way to determine the branch/commit we want to check against?
 # for now look back until DIFF_BRANCH and find other merge commits -- those with (#..) in the commit message

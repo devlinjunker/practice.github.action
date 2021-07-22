@@ -1,6 +1,8 @@
 #! /bin/bash
 # Verify that a branch can be merged
 
+set -eu
+
 # check branch type prefix != "poc"
 
 if [[ "$BRANCH" =~ "poc/" ]]; then

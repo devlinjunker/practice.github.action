@@ -1,7 +1,10 @@
 #! /bin/bash
 #  Open Versioned files in repo and increment version
 
-if [ -z "$1" ]; then
+set -eu
+
+# check number of arguments first so we don't access unset variable and error with set -u
+if [[ $# == 0 || -z "$1" ]]; then
     echo "Error: no version number"
     exit 1;
 fi;

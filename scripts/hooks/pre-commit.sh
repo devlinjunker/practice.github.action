@@ -2,6 +2,8 @@
 # Pre-commit githook to run before every commit to validate it locally
 #   1. Check that branch name matches conventions (branch-name.sh)
 
+set -eu
+
 # set directory for calling other scripts
 DIR=$(dirname "${BASH_SOURCE[0]}")
 

@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -eu
+
 mkdir wiki
 
 # create `.README` file with Table of Contents to link to each

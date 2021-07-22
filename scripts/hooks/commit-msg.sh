@@ -1,6 +1,8 @@
 #! /bin/bash
 # Script to verify that commit message matches conventions
 
+set -eu
+
 # set directory for calling other scripts
 DIR=$(dirname "${BASH_SOURCE[0]}")
 # if in hook, then prep PATH to find in repo `scripts/hooks/` dir 

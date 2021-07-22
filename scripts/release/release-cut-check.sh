@@ -1,5 +1,6 @@
 #! /bin/bash
 
+set -eu
 
 if git branch -a | grep "$RELEASE_BRANCH"; then
   echo "::error::Release Branch Already Exists";

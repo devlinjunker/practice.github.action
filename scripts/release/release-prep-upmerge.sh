@@ -1,5 +1,7 @@
 #! /bin/bash
 
+set -eu
+
 git checkout develop;
 
 # Get version in `develop` (We wantt this to be version in the final README)
