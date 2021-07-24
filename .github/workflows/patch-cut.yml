@@ -3,7 +3,7 @@
 ##  - must be created off of `main` or `release-*` branch
 ##  - creates a PR against the branch it was cut off of
 
-name: "Patch-Cut"
+name: "Patch-Cut" 
 
 # Workflow runs when manually triggered using the UI or API
 on: workflow_dispatch
