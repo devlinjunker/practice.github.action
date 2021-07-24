@@ -41,8 +41,9 @@ N/A
 
 ## Example usage
 
+```
 uses: devlinjunker/practice.github.action@v1
-
+```
 
 ## Links
 
