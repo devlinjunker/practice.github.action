@@ -33,7 +33,15 @@ Template Based on [Example CII Project](https://github.com/devlinjunker/example.
 ## Quick Setup/Run
 <!-- This section should try to quickly explain how to setup the project and start using it (server/app/demo/template) - ideally in list format -->
 
- - TODO:
+## Inputs
+N/A
+
+## Outputs
+N/A
+
+## Example usage
+
+uses: devlinjunker/practice.github.action@v1
 
 
 ## Links
