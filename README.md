@@ -1,5 +1,5 @@
 ---
-Version: 0.1-SNAPSHOT
+Version: 0.2-SNAPSHOT
 ---
 
 # Practice Github Action
