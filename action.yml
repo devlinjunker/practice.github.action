@@ -1,11 +1,11 @@
 name: 'First action'
 description: 'Echo an output'
-inputs:
+# inputs:
   # who-to-greet:  # id of input
     # description: 'Who to greet'
     # required: true
     # default: 'World'
-outputs:
+# outputs:
   # time: # id of output
     # description: 'The time we greeted you'
 runs:
