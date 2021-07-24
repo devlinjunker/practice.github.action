@@ -9,6 +9,8 @@ on:
   push:
     branches:
       - release-*
+    paths-ignore:
+    - 'README.md'
 
 jobs:
   create-release-tag:
