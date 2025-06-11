@@ -1,0 +1,51 @@
+name: Manage TODO issues
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - develop
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  todo-issues:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.PAT }}
+      GITHUB_REPOSITORY: ${{ github.repository }}
+      GITHUB_SHA: ${{ github.sha }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      PR_URL: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}
+      GITHUB_BASE_REF: ${{ github.event.pull_request.base.ref }}
+
+
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Ensure `code-todo` label exists
+        run: |
+          if ! gh label list --repo "$GITHUB_REPOSITORY" | grep -q '^code-todo'; then
+            gh label create code-todo \
+              --repo "$GITHUB_REPOSITORY" \
+              --color FFD700 \
+              --description "Issues generated from TODO comments in code"
+          fi
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install script dependencies
+        working-directory: .github/scripts/todo-issues
+        run: npm ci
+
+      - name: Run TODO issue manager
+        run: node .github/scripts/todo-issues/todo-issues.js
