@@ -1,0 +1,97 @@
+name: Manage TODO issues
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - develop
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  todo-issues:
+    runs-on: ubuntu-latest
+
+    env:
+      GH_TOKEN: ${{ secrets.PAT }}
+      GITHUB_REPOSITORY: ${{ github.repository }}
+      GITHUB_SHA: ${{ github.sha }}
+
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gh
+
+      - name: Ensure `code-todo` label exists
+        run: |
+          if ! gh label list --repo "$GITHUB_REPOSITORY" | grep -q '^code-todo'; then
+            gh label create code-todo \
+              --repo "$GITHUB_REPOSITORY" \
+              --color FFD700 \
+              --description "Issues generated from TODO comments in code"
+          fi
+
+      - name: Process TODO diffs
+        run: |
+          set -euo pipefail
+          git fetch origin "${{ github.base_ref }}"
+          git diff origin/"${{ github.base_ref }}" --unified=0 | \
+          awk -v repo="${GITHUB_REPOSITORY}" -v sha="${GITHUB_SHA}" '
+            # Track file path
+            /^diff --git a\/.* b\// {
+              file = $4; sub(/^b\//, "", file)
+            }
+            # Parse hunk header for old/new line numbers
+            /^@@/ {
+              split($2, oldArr, /[+,]/); split($3, newArr, /[+,]/)
+              old_line = oldArr[2]; new_line = newArr[2]
+            }
+            # REMOVED TODO → post issue comment only
+            /^-\s*(\/\/|#|\/\*|<!--)\s*TODO/ {
+              old_txt = $0; sub(/^-.*TODO[: ]*/, "", old_txt)
+              cmd = "gh api search/issues -f q=\"repo:" repo " in:body \\\"" old_txt "\\\" is:open\" --jq .items[0].number"
+              cmd | getline num; close(cmd)
+              if (num && num != "null") {
+                msg = "⚠️ The TODO `" old_txt "` was removed in this PR; please review if this issue can now be closed."
+                system("gh issue comment " num " --body \"" msg "\"")
+              }
+            }
+            # ADDED or UPDATED TODO → create or edit, and warn on both
+            /^\+\s*(\/\/|#|\/\*|<!--)\s*TODO/ {
+              new_txt = $0; sub(/^\+.*TODO[: ]*/, "", new_txt)
+              url = "https://github.com/" repo "/blob/" sha "/" file "#L" new_line
+              title = "TODO in " file ":" new_line " – " new_txt
+
+              # look for an existing open issue by text
+              cmd = "gh api search/issues -f q=\"repo:" repo " in:body \\\"" new_txt "\\\" is:open\" --jq .items[0].number"
+              cmd | getline existing; close(cmd)
+
+              if (existing && existing != "null") {
+                # update existing issue
+                issue_url = "https://github.com/" repo "/issues/" existing
+                body = "🔄 Updated TODO: " new_txt "\\nLocation: [\\`" file ":" new_line "\\`](" url ")"
+                system("gh issue edit " existing " --title \"" title "\" --body \"" body "\"")
+                # PR warning with link to the issue
+                warn = "::warning file=" file ",line=" new_line ",title=Updated TODO::A TODO was updated to \"" new_txt "\"; issue updated: " issue_url
+                system("echo \"" warn "\"")
+              } else {
+                # create new issue and capture its URL
+                create_cmd = "gh issue create --repo " repo \
+                             " --title \"" title "\"" \
+                             " --body \"" "🆕 Found TODO in file [\\`" file ":" new_line "\\`](" url "):\\n> " new_txt "\"" \
+                             " --label code-todo --json url --jq \".url\""
+                create_cmd | getline issue_url; close(create_cmd)
+                # PR warning with link to the new issue
+                warn = "::warning file=" file ",line=" new_line ",title=New TODO::A new TODO \"" new_txt "\" was added; issue created: " issue_url
+                system("echo \"" warn "\"")
+              }
+            }
+          '
