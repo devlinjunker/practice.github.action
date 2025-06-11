@@ -13,3 +13,5 @@ runs:
   image: 'Dockerfile'
   # args:
     # - ${{ inputs.who-to-greet }}
+
+# TODO add jobs to empty example action 
