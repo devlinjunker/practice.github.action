@@ -74,12 +74,6 @@ jobs:
             # ADDED or UPDATED TODO → create or comment/overwrite
             if [[ $line =~ ^\+\ *(//|#|/\*|<!--)\ TODO ]]; then
               new_txt="${line#*+*TODO }"
-              # determine true line in file
-              if [[ -f "$file" ]]; then
-                new_line=$(grep -n -F "$new_txt" "$file" | head -n1 | cut -d: -f1)
-              else
-                new_line="?"
-              fi
               url="https://github.com/$repo/blob/$sha/$file#L$new_line"
               title="TODO in $file:$new_line – $new_txt"
 
@@ -87,28 +81,29 @@ jobs:
                          --json number --jq '.[0].number')
 
               if [[ -n "$existing" && "$existing" != "null" ]]; then
+                # fetch current issue body
                 issue_body=$(gh issue view "$existing" --repo "$repo" --json body --jq .body)
+
                 if [[ "$issue_body" == *"$pr_url"* ]]; then
-                  # same PR: overwrite with the “new” format
+                  # same PR – overwrite body as if new
                   gh api repos/"$repo"/issues/"$existing" -X PATCH \
                     -f title="$title" \
-                    -f body="🆕 Found TODO in file [$file:$new_line]($url):<br/><blockquote>$new_txt</blockquote><br/>PR: $pr_url (#$pr_num)<br/>Commit: $sha"
+                    -f body="🆕 Found TODO in file [$file:$new_line]($url):<br/><blockquote>$new_txt</blockquote>PR: $pr_url (#$pr_num)<br/>Commit: $sha"
                 else
-                  # different PR: add a comment
+                  # different PR – add a comment
                   gh issue comment "$existing" \
                     --body "🔄 Updated TODO: $new_txt<br/>Location: [$file:$new_line]($url)<br/>PR: $pr_url (#$pr_num)<br/>Commit: $sha"
                 fi
+
                 echo "::warning file=$file,line=$new_line,title=Updated TODO::A TODO was updated to '$new_txt' in PR #$pr_num; see issue #$existing"
               else
-                # brand-new TODO → create issue with blockquote
+                # brand-new TODO → create issue
                 issue_url=$(gh api repos/"$repo"/issues -X POST \
                   -F title="$title" \
-                  -F body="🆕 Found TODO in file [$file:$new_line]($url):<br/><blockquote>$new_txt</blockquote><br/>PR: $pr_url (#$pr_num)<br/>Commit: $sha" \
+                  -F body="🆕 Found TODO in file [$file:$new_line]($url):<br/><blockquote>$new_txt</blockquote>PR: $pr_url (#$pr_num)<br/>Commit: $sha" \
                   -f labels:='["code-todo"]' \
                   --jq .html_url)
                 echo "::warning file=$file,line=$new_line,title=New TODO::A new TODO '$new_txt' was added in PR #$pr_num; see $issue_url"
               fi
             fi
           done
-
-
