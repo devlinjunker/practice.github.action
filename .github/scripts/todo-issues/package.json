@@ -1,0 +1,12 @@
+{
+  "name": "todo-issues-manager",
+  "version": "1.0.0",
+  "description": "GitHub Action helper script for managing TODO comments as issues",
+  "main": "todo-issues.js",
+  "scripts": {
+    "start": "node todo-issues.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^19.0.7"
+  }
+}
