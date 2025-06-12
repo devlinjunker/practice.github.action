@@ -8,6 +8,9 @@ description: 'Echo an output'
 # outputs:
   # time: # id of output
     # description: 'The time we greeted you'
+
+# TODO: Add examples of jobs in action
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
