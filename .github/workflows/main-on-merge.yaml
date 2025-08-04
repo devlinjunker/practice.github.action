@@ -15,7 +15,7 @@ jobs:
   wiki-sync:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3.1.0
       
     - name: Collect READMEs for Wiki
       run: ./scripts/workflows/collect-wiki.sh
@@ -43,7 +43,7 @@ jobs:
       patch: ${{ steps.version.outputs.patch }}
 
     steps: 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3.1.0
       with:
         ## This is a Personal Access Token from Admin User that allows us to bypass branch protections on develop
         token: ${{ secrets.PAT }}
@@ -86,7 +86,7 @@ jobs:
     needs: create-release-tag
 
     steps: 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3.1.0
       with:
         ## This is a Personal Access Token from Admin User that allows us to bypass branch protections on develop
         token: ${{ secrets.PAT }}
